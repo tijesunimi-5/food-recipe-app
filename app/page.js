@@ -9,7 +9,7 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [snackRecipes, setSnackRecipes] = useState([]);
   const [query, setQuery] = useState("");
-  const apiKey = "7760048b98e04ef8b12239fd5beb4092";
+  const apiKey = "5c349d02cf7942cc9940532aafafcad1";
 
   const fetchSnackRecipes = async () => {
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=cuisine&number=1`;
@@ -53,7 +53,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-[680vh]">
+    <div className="">
       <div className="heropage mt-12 w-[510px] z-20 relative">
         <div className="mobile-background">
           <img src="/food1.jpg" />
@@ -135,7 +135,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p>No snack recipes available.</p>
+              <p className="text-red-400 text-xl">No Cuisine recipes available. (Check internet connection)</p>
             )}
 
             <div className="w-[200px] ml-40 mt-10 h-[40px]">
