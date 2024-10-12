@@ -7,12 +7,12 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
@@ -24,4 +24,54 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+h1 {
+  font-size: 1.3em;
+  font-weight: 700;
+  /* letter-spacing: 1px; */
+}
+span {
+  color: orange;
+}
+.mobile-background {
+  width: 510px;
+  height: 250px;
+  background-size: cover;
+  background-position-x: -50px;
+  position: absolute;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.3);
+  width: 510px;
+  height: 340px;
+  position: absolute;
+}
+
+.recipe-images {
+  width: 430px;
+  height: 300px;
+}
+.cuisine-image {
+  width: 380px;
+  height: 300px;
+}
+.snack-recipe {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  transition: 0.5 ease;
+}
+.snack-title-overlay {
+  background: rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 0px;
+  z-index: 30;
+  display: none;
+}
+.snack-recipe:hover .snack-title-overlay:hover  {
+  display: flex;
+  cursor: pointer;
 }
