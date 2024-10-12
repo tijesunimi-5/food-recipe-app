@@ -24,7 +24,9 @@ const Header = () => {
       </ul>
 
       <div>
-        <Button onClick={buttonHandler}>Lastest Recipe</Button>
+        <Link href={'/register/sign-up'}>
+          <Button onClick={buttonHandler}>Lastest Recipe</Button>
+        </Link>
       </div>
     </header>
   );

@@ -16,7 +16,7 @@ const Footer = () => {
           every taste and occasion.
         </p>
 
-        <p className="flex justify-between w-[250px] ml-20 mt-4">
+        <p className="flex justify-between w-[290px] ml-16 mt-4">
           <Link href={"/about-us"} className="underline decoration-orange-500 ">
             About Us
           </Link>
@@ -25,6 +25,9 @@ const Footer = () => {
           </Link>
           <Link href={"/blog"} className="underline decoration-orange-500 ">
             Blogs
+          </Link>
+          <Link href={"/register/sign-up"} className="underline decoration-orange-500 ">
+            Sign-up
           </Link>
         </p>
 
