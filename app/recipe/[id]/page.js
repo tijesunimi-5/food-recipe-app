@@ -23,18 +23,24 @@ export default async function RecipePage({ params }) {
   }
 
   return (
-    <div className="text-center">
-      <h1 className="text-4xl font-bold mt-10">{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} className="mt-5 rounded-xl" />
-      <p className="text-xl mt-5">
-        {recipe.instructions || "No instructions available"}
-      </p>
-      <h2 className="text-2xl font-bold mt-10">Ingredients:</h2>
-      <ul className="list-disc list-inside mt-5">
-        {recipe.extendedIngredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.original}</li>
-        ))}
-      </ul>
+    <div className="text-center w-[510px] mt-20">
+      <div className="w-[450px] ml-8">
+        <h1 className="text-4xl font-bold mt-10">{recipe.title}</h1>
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="mt-5 rounded-xl"
+        />
+        <p className="text-xl mt-5 text-start">
+          {recipe.instructions || "No instructions available"}
+        </p>
+        <h2 className="text-2xl font-bold mt-10">Ingredients:</h2>
+        <ul className="list-disc text-start mt-5">
+          {recipe.extendedIngredients.map((ingredient) => (
+            <li key={ingredient.id}>{ingredient.original}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
