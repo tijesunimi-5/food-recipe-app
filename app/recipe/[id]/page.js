@@ -47,7 +47,7 @@ export default async function RecipePage({ params }) {
       <div className="mt-20">
         <h1>View more recipes</h1>
 
-        <div>
+        <div className="w-[200px] h-[40px] ml-40 mt-5">
           <Link href={'/recipe'}>
           <Button>View More</Button>
           </Link>
