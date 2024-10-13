@@ -75,3 +75,7 @@ span {
   display: flex;
   cursor: pointer;
 }
+.recipe-image-collection {
+  width: 380px;
+  margin-top: -12px;
+}

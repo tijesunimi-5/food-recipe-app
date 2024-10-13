@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
+import CollectionCard from "@/components/CollectionCard";
 import axios from "axios";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
@@ -135,13 +136,142 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-red-400 text-xl">No Cuisine recipes available. (Check internet connection)</p>
+              <p className="text-red-400 text-xl">
+                No Cuisine recipes available. (Check internet connection)
+              </p>
             )}
 
             <div className="w-[200px] ml-40 mt-10 h-[40px]">
               <Link href={"/recipe/snack"}>
                 <Button>See More</Button>
               </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-20 bg-[#F2F2F2] w-[510px]">
+        <div className="w-[450px] text-center ml-7 py-4">
+          <h1>Learn More About Us</h1>
+          <p className="text-xl mt-4">
+            Discover new recipes and cooking techniques with our diverse
+            selection of cuisine types.
+          </p>
+          <div className="w-[150px] h-[40px] ml-40 mt-4">
+            <Link href={"/about-us"}>
+              <Button>Learn About Us</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5]">
+        <div className="w-[490px] text-center ml-2 py-6">
+          <h1 className="text-2xl">Recipe Collection</h1>
+          <p className="text-xl">
+            From quick weeknight dinners to elaborate weekend projects, we have
+            recipes to fit every lifestyle and taste
+          </p>
+
+          <div className="w-full text-center  overflow-x-scroll scroll-smooth">
+            <div className=" w-[990px]  ml-5 mr-10  mt-5 ">
+              <div className="w-[850px] flex gap-10 justify-between">
+                <div className="w-[390px] ">
+                  <CollectionCard>
+                    <div className="px-5">
+                      <img
+                        src="/food3.jpg"
+                        className="recipe-image-collection  rounded-xl"
+                      />
+                      <h1 className="mt-4">Fried Chicken</h1>
+                      <p className="text-xl pt-3">
+                        This easy and flavorful dish features juicy chicken
+                        thighs and tender asparagus roasted to perfection.{" "}
+                      </p>
+
+                      <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
+                      <ul className="flex justify-between w-[290px] mt-3 text-xl font-semibold list-disc ml-10">
+                        <li>30 Min</li>
+                        <li>Easy</li>
+                        <li>4.5 Ratings</li>
+                      </ul>
+                    </div>
+                  </CollectionCard>
+                </div>
+
+                <div className="w-[390px]">
+                  <CollectionCard>
+                    <div className="px-5">
+                      <img
+                        src="/food3.jpg"
+                        className="recipe-image-collection  rounded-xl"
+                      />
+                      <h1 className="mt-4">Fried Chicken</h1>
+                      <p className="text-xl pt-3">
+                        This easy and flavorful dish features juicy chicken
+                        thighs and tender asparagus roasted to perfection.{" "}
+                      </p>
+
+                      <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
+                      <ul className="flex justify-between w-[290px] mt-3 text-xl font-semibold list-disc ml-10">
+                        <li>30 Min</li>
+                        <li>Easy</li>
+                        <li>4.5 Ratings</li>
+                      </ul>
+                    </div>
+                  </CollectionCard>
+                </div>
+
+                <div className="w-[390px] mr-10">
+                  <CollectionCard>
+                    <div className="px-5">
+                      <img
+                        src="/food3.jpg"
+                        className="recipe-image-collection rounded-xl"
+                      />
+                      <h1 className="mt-4">Fried Chicken</h1>
+                      <p className="text-xl pt-3">
+                        This easy and flavorful dish features juicy chicken
+                        thighs and tender asparagus roasted to perfection.{" "}
+                      </p>
+
+                      <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
+                      <ul className="flex justify-between w-[290px] mt-3 text-xl font-semibold list-disc ml-10">
+                        <li>30 Min</li>
+                        <li>Easy</li>
+                        <li>4.5 Ratings</li>
+                      </ul>
+                    </div>
+                  </CollectionCard>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[510px] mt-32 text-center">
+        <div className="text-center bg-[#F2F2F2] py-4">
+          <h1 className="text-4xl font-bold">Send Reviews</h1>
+          <div className="mt-10">
+            <label
+              htmlFor="email"
+              className="absolute px-2 text-2xl font-semibold"
+            >
+              Email:{" "}
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="border-2 w-[350px] rounded-lg border-orange-500 pl-20  text-2xl"
+            />
+            <textarea
+              rows={3}
+              className="border-2 border-orange-500 text-2xl pl-2 mt-5 rounded-lg w-[350px]"
+            />
+
+            <div className="w-[150px] mt-5 ml-44 h-[40px]">
+              <Button>Send</Button>
             </div>
           </div>
         </div>
