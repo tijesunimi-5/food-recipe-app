@@ -23,9 +23,7 @@ const Footer = () => {
           <Link href={"/recipe"} className="underline decoration-orange-500 ">
             Recipes
           </Link>
-          <Link href={"/blog"} className="underline decoration-orange-500 ">
-            Blogs
-          </Link>
+         
           <Link href={"/register/sign-up"} className="underline decoration-orange-500 ">
             Sign-up
           </Link>

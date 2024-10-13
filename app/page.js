@@ -35,7 +35,12 @@ export default function Home() {
       const response = await axios.get(url);
 
       const { results } = response.data;
-      setRecipes(results);
+      if (results && results.length > 0) {
+        
+        setRecipes(results);
+      }else {
+        console.error("No recipe found")
+      }
     } catch (error) {
       console.error("Error fetching recipes:", error);
     }
@@ -78,32 +83,36 @@ export default function Home() {
         </p>
 
         <div className="text-center mt-10 pb-10">
-          <div className="text-center mt-10 pb-10 ml-8 ">
-            {recipes.map((recipe) => (
-              <div className="mt-8">
-                <Card key={recipe.id}>
-                  <div className="text-center ml-2 ">
-                    <img
-                      src={recipe.image}
-                      alt={recipe.title}
-                      className="rounded-xl recipe-images"
-                    />
-                    <div className="w-[350px] ml-9">
-                      <h1 className="text-2xl mt-2">{recipe.title}</h1>
-                      <p className="text-xl font-medium mt-3">
-                        Delicious recipe that you would love to try.
-                      </p>
-                      <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                        <Link href={`/recipe/${recipe.id}`}>
-                          <Button>See Full Details</Button>
-                        </Link>
+          {recipes.length > 0 ? (
+            <div className="text-center mt-10 pb-10 ml-8 ">
+              {recipes.map((recipe) => (
+                <div className="mt-8">
+                  <Card key={recipe.id}>
+                    <div className="text-center ml-2 ">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="rounded-xl recipe-images"
+                      />
+                      <div className="w-[350px] ml-9">
+                        <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                        <p className="text-xl font-medium mt-3">
+                          Delicious recipe that you would love to try.
+                        </p>
+                        <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Card>
-              </div>
-            ))}
-          </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>Recipe temporarily unavailable. try again later</p>
+          )}
         </div>
       </div>
 
@@ -136,8 +145,9 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-red-400 text-xl">
-                No Cuisine recipes available. (Check internet connection)
+              <p className="mt-3 text-xl">
+                No Cuisine recipes available. (site may have be down temporarily
+                try again later.)
               </p>
             )}
 
@@ -272,6 +282,11 @@ export default function Home() {
 
             <div className="w-[150px] mt-5 ml-44 h-[40px]">
               <Button>Send</Button>
+            </div>
+            <div className="w-[250px] h-[40px] ml-32 mt-10">
+              <Link href={'/register/newsletter'} >
+                <Button>Subcribe to our newsletter</Button>
+              </Link>
             </div>
           </div>
         </div>

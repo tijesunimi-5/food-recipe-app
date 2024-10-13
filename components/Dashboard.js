@@ -34,15 +34,10 @@ const Dashboard = () => {
         </li>
       </ul>
 
-      <div className="flex mt-20 ml-24">
-        <div className="w-[130px] mr-10 h-[40px]">
-          <Link href={"/register/login"}>
-            <Button>Login</Button>
-          </Link>
-        </div>
-        <div className="w-[130px]">
-          <Link href={"/sign-up"}>
-            <Button>Sign up</Button>
+      <div className="flex mt-20 ">
+        <div className="w-[250px] h-[40px] ml-32 mt-10">
+          <Link href={"/register/newsletter"} onClick={closeDashboard}>
+            <Button>Subcribe to our newsletter</Button>
           </Link>
         </div>
       </div>
