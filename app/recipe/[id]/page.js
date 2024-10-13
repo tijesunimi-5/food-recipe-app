@@ -1,5 +1,7 @@
 // app/recipe/[id]/page.js
+import Button from "@/components/Button";
 import axios from "axios";
+import Link from "next/link";
 
 async function getRecipe(id) {
   const apiKey = process.env.SPOONACULAR_API_KEY;
@@ -40,6 +42,43 @@ export default async function RecipePage({ params }) {
             <li key={ingredient.id}>{ingredient.original}</li>
           ))}
         </ul>
+      </div>
+
+      <div className="mt-20">
+        <h1>View more recipes</h1>
+
+        <div>
+          <Link href={'/recipe'}>
+          <Button>View More</Button>
+          </Link>
+        </div>
+      </div>
+
+      <div className="w-[510px] mt-32 text-center">
+        <div className="text-center bg-[#F2F2F2] py-4">
+          <h1 className="text-4xl font-bold">Send Reviews</h1>
+          <div className="mt-10">
+            <label
+              htmlFor="email"
+              className="absolute px-2 text-2xl font-semibold"
+            >
+              Email:{" "}
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="border-2 w-[350px] rounded-lg border-orange-500 pl-20  text-2xl"
+            />
+            <textarea
+              rows={3}
+              className="border-2 border-orange-500 text-2xl pl-2 mt-5 rounded-lg w-[350px]"
+            />
+
+            <div className="w-[150px] mt-5 ml-44 h-[40px]">
+              <Button>Send</Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
