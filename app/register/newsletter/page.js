@@ -78,8 +78,7 @@ const page = () => {
           </div>
           <p className="text-xl ml-2">
             <span>
-              You if you need a good looking, well designed website, reach out
-              to me{" "}
+              If you need a good looking, well designed website, reach out to me{" "}
               <a href="/" className="underline">
                 Here!
               </a>{" "}
@@ -105,6 +104,31 @@ const page = () => {
               <FaWhatsappSquare />
             </a>
           </p>
+        </Card>
+      </div>
+
+      <div className="ml-9 mt-10" id="support">
+        <Card>
+          <h1 className="text-center text-2xl">
+            Bank accounts to send support funds
+          </h1>
+          <div className="ml-9 mt-4">
+            <p className="text-2xl ">
+              <span>Account number: </span>9152282614
+              <br />
+              <span>Account name:</span> Tijesunimi Idowu
+              <br />
+              <span>Bank account: </span>OPay.
+            </p>
+
+            <p className="text-2xl mt-3 border-t-2 w-[350px] pt-2 border-gray-500">
+              <span>Account number: </span>2235502579
+              <br />
+              <span>Account name:</span> <br /> Tijesunimi Samuel Idowu
+              <br />
+              <span>Bank account: </span> <br /> United Bank of Africa.
+            </p>
+          </div>
         </Card>
       </div>
     </div>

@@ -54,10 +54,6 @@ export default function Home() {
     fetchSnackRecipes();
   }, []);
 
-  const handleSearch = () => {
-    fetchRecipes();
-  };
-
   return (
     <div className="">
       <div className="heropage mt-12 w-[510px] z-20 relative">
@@ -152,7 +148,7 @@ export default function Home() {
             )}
 
             <div className="w-[200px] ml-40 mt-10 h-[40px]">
-              <Link href={"/recipe/snack"}>
+              <Link href={"/recipe"}>
                 <Button>See More</Button>
               </Link>
             </div>

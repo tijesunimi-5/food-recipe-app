@@ -1,4 +1,5 @@
 import CollectionCard from "@/components/CollectionCard";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -88,9 +89,9 @@ const page = () => {
           <h1 className="mt-10 font-bold text-3xl">Call to action</h1>
           <p className="text-xl font-semibold mt-5">
             Send developer some funds.{" "}
-            <a className="underline decoration-orange-500" href="/">
+            <Link className="underline decoration-orange-500" href="/register/newsletter#support">
               Click here
-            </a>{" "}
+            </Link>{" "}
             to support
           </p>
 
