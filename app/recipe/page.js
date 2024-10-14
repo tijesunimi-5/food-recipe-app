@@ -122,7 +122,9 @@ export default function Home() {
                           Delicious recipe that you would love to try.
                         </p>
                         <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                          <Button>See Full Details</Button>
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -156,7 +158,9 @@ export default function Home() {
                           Delicious recipe that you would love to try.
                         </p>
                         <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                          <Button>See Full Details</Button>
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -192,7 +196,9 @@ export default function Home() {
                           Delicious recipe that you would love to try.
                         </p>
                         <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                          <Button>See Full Details</Button>
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -228,7 +234,9 @@ export default function Home() {
                           Delicious recipe that you would love to try.
                         </p>
                         <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                          <Button>See Full Details</Button>
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
