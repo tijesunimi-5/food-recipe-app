@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   const fetchRecipes = async () => {
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=15`;
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=35`;
 
     try {
       const response = await axios.get(url);

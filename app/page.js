@@ -12,6 +12,8 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
 
+  const recipe = {recipes}
+
   const fetchSnackRecipes = async () => {
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=cuisine&number=1`;
 
@@ -180,17 +182,17 @@ export default function Home() {
           </p>
 
           <div className="w-full text-center  overflow-x-scroll scroll-smooth">
-            <div className=" w-[990px]  ml-5 mr-10  mt-5 ">
-              <div className="w-[850px] flex gap-10 justify-between">
+            <div className=" w-[840px]  ml-5 mr-7  mt-5 ">
+              <div className="w-[850px] flex gap-9">
                 <div className="w-[390px] ">
                   <CollectionCard>
-                    <div className="px-5">
+                    <div className="px-5"> 
                       <img
                         src="/food3.jpg"
                         className="recipe-image-collection  rounded-xl"
                       />
                       <h1 className="mt-4">Fried Chicken</h1>
-                      <p className="text-xl pt-3">
+                      <p className="text-xl pt-3"> 
                         This easy and flavorful dish features juicy chicken
                         thighs and tender asparagus roasted to perfection.{" "}
                       </p>
@@ -209,13 +211,12 @@ export default function Home() {
                   <CollectionCard>
                     <div className="px-5">
                       <img
-                        src="/food3.jpg"
+                        src="/food1.jpg"
                         className="recipe-image-collection  rounded-xl"
                       />
-                      <h1 className="mt-4">Fried Chicken</h1>
+                      <h1 className="mt-4"> Hamburger</h1>
                       <p className="text-xl pt-3">
-                        This easy and flavorful dish features juicy chicken
-                        thighs and tender asparagus roasted to perfection.{" "}
+                        This fresh Hamburger and fresh sweet potatoe fries is well prepared with fresh ingredients
                       </p>
 
                       <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
@@ -228,28 +229,7 @@ export default function Home() {
                   </CollectionCard>
                 </div>
 
-                <div className="w-[390px] mr-10">
-                  <CollectionCard>
-                    <div className="px-5">
-                      <img
-                        src="/food3.jpg"
-                        className="recipe-image-collection rounded-xl"
-                      />
-                      <h1 className="mt-4">Fried Chicken</h1>
-                      <p className="text-xl pt-3">
-                        This easy and flavorful dish features juicy chicken
-                        thighs and tender asparagus roasted to perfection.{" "}
-                      </p>
-
-                      <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
-                      <ul className="flex justify-between w-[290px] mt-3 text-xl font-semibold list-disc ml-10">
-                        <li>30 Min</li>
-                        <li>Easy</li>
-                        <li>4.5 Ratings</li>
-                      </ul>
-                    </div>
-                  </CollectionCard>
-                </div>
+                
               </div>
             </div>
           </div>
