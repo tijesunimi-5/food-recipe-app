@@ -4,15 +4,31 @@ import Card from "@/components/Card";
 import CollectionCard from "@/components/CollectionCard";
 import axios from "axios";
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [snackRecipes, setSnackRecipes] = useState([]);
   const [query, setQuery] = useState("");
   const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
+  const emailInputRef = useRef();
+  const MessageInputRef = useRef();
+  const [messsage, setMessage] = useState("");
 
-  const recipe = {recipes}
+  const sendMessage = (e) => {
+    e.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredMessage = MessageInputRef.current.value;
+
+    fetch("api/recipes", {
+      method: "POST",
+      body: JSON.stringify({ email: enteredEmail, message: enteredMessage }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json()).then((data) => setMessage(data));
+  };
 
   const fetchSnackRecipes = async () => {
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=cuisine&number=1`;
@@ -38,10 +54,9 @@ export default function Home() {
 
       const { results } = response.data;
       if (results && results.length > 0) {
-        
         setRecipes(results);
-      }else {
-        console.error("No recipe found")
+      } else {
+        console.error("No recipe found");
       }
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -186,13 +201,13 @@ export default function Home() {
               <div className="w-[850px] flex gap-9">
                 <div className="w-[390px] ">
                   <CollectionCard>
-                    <div className="px-5"> 
+                    <div className="px-5">
                       <img
                         src="/food3.jpg"
                         className="recipe-image-collection  rounded-xl"
                       />
                       <h1 className="mt-4">Fried Chicken</h1>
-                      <p className="text-xl pt-3"> 
+                      <p className="text-xl pt-3">
                         This easy and flavorful dish features juicy chicken
                         thighs and tender asparagus roasted to perfection.{" "}
                       </p>
@@ -216,7 +231,8 @@ export default function Home() {
                       />
                       <h1 className="mt-4"> Hamburger</h1>
                       <p className="text-xl pt-3">
-                        This fresh Hamburger and fresh sweet potatoe fries is well prepared with fresh ingredients
+                        This fresh Hamburger and fresh sweet potatoe fries is
+                        well prepared with fresh ingredients
                       </p>
 
                       <hr className="w-[310px] ml-4 h-[2px] mt-10 bg-orange-500" />
@@ -228,8 +244,6 @@ export default function Home() {
                     </div>
                   </CollectionCard>
                 </div>
-
-                
               </div>
             </div>
           </div>
@@ -250,20 +264,23 @@ export default function Home() {
               type="email"
               id="email"
               className="border-2 w-[350px] rounded-lg border-orange-500 pl-20  text-2xl"
+              ref={emailInputRef}
             />
             <textarea
               rows={3}
+              ref={MessageInputRef}
               className="border-2 border-orange-500 text-2xl pl-2 mt-5 rounded-lg w-[350px]"
             />
 
             <div className="w-[150px] mt-5 ml-44 h-[40px]">
-              <Button>Send</Button>
+              <Button onClick={sendMessage}>Send</Button>
             </div>
             <div className="w-[250px] h-[40px] ml-32 mt-10">
-              <Link href={'/register/newsletter'} >
+              <Link href={"/register/newsletter"}>
                 <Button>Subcribe to our newsletter</Button>
               </Link>
             </div>
+            <p className="text-2xl text-center">{messsage}</p>
           </div>
         </div>
       </div>
