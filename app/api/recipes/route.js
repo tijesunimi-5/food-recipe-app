@@ -25,6 +25,10 @@ export async function POST(req) {
     //Connect to the database
     const client = await connectToDatabase();
     const db = client.db();
+    const collection = db.collection("reviews");
+
+    //Insert the email and message into the collection
+    const result = await collection.insertOne({ email, message });
 
     //Close the database connection
     client.close();

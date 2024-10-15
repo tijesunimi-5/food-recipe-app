@@ -12,22 +12,39 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
   const emailInputRef = useRef();
-  const MessageInputRef = useRef();
+  const messageInputRef = useRef();
   const [messsage, setMessage] = useState("");
 
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
-    const enteredMessage = MessageInputRef.current.value;
+    const enteredMessage = messageInputRef.current.value;
 
-    fetch("api/recipes", {
-      method: "POST",
-      body: JSON.stringify({ email: enteredEmail, message: enteredMessage }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => response.json()).then((data) => setMessage(data));
+    try {
+      const response = await fetch("/api/recipes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: enteredEmail, message: enteredMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message.");
+      }
+
+      const data = await response.json();
+      setMessage("Review submitted successfully.");
+      console.log(data);
+
+      //Clear the input fields
+      emailInputRef.current.value = "";
+      messageInputRef.current.value = "";
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setMessage("Failed to send message. Please try again later.");
+    }
   };
 
   const fetchSnackRecipes = async () => {
@@ -268,7 +285,7 @@ export default function Home() {
             />
             <textarea
               rows={3}
-              ref={MessageInputRef}
+              ref={messageInputRef}
               className="border-2 border-orange-500 text-2xl pl-2 mt-5 rounded-lg w-[350px]"
             />
 
