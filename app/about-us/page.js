@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-[510px] md:w-[768px]">
+    <div className="w-[510px] md:w-[768px] lg:w-[1006px]">
       <div className="mt-20 pl-2">
         <h1>
           Welcome to <span>Tasty-</span>Cook! Your ultimate cooking companion.
@@ -89,7 +89,10 @@ const page = () => {
           <h1 className="mt-10 font-bold text-3xl">Call to action</h1>
           <p className="text-xl font-semibold mt-5">
             Send developer some funds.{" "}
-            <Link className="underline decoration-orange-500" href="/register/newsletter#support">
+            <Link
+              className="underline decoration-orange-500"
+              href="/register/newsletter#support"
+            >
               Click here
             </Link>{" "}
             to support
@@ -97,8 +100,12 @@ const page = () => {
 
           <div className="flex flex-col">
             <h1 className="text-3xl mt-7">Contact Me</h1>
-            <span className="text-xl font-semibold">Email: tijesunimiidowu16@gmail.com</span>
-            <span className="text-xl font-semibold">Phone number: 07018268171</span>
+            <span className="text-xl font-semibold">
+              Email: tijesunimiidowu16@gmail.com
+            </span>
+            <span className="text-xl font-semibold">
+              Phone number: 07018268171
+            </span>
             <span className="text-xl font-semibold">Hot-line: 09152282614</span>
           </div>
         </div>

@@ -145,18 +145,18 @@ export default function Home() {
   };
 
   return (
-    <div className="w-[510px] md:w-[768px]">
+    <div className="w-[510px] md:w-[768px] lg:w-[1006px]">
       <div className="mt-20">
-        <div className="pl-7 py-2  text-black relative w-[479px] md:ml-32">
+        <div className="pl-7 py-2  text-black relative w-[479px] md:ml-32 lg:ml-60">
           <label
-            htmlFor="email"
+            htmlFor="text"
             className="absolute px-2 text-2xl font-semibold"
           >
             Search:{" "}
           </label>
           <input
             type="text"
-            id="email"
+            id="text"
             value={query}
             className="border-2 relative w-[450px] rounded-lg bg-transparent backdrop:blur-3xl border-orange-500 pl-24  text-2xl"
             onChange={(e) => setQuery(e.target.value)}
@@ -477,9 +477,7 @@ export default function Home() {
         </div>
 
         <div className="relative">
-          <h1 className="mt-5 text-4xl pl-5">
-            Lunch Recommendation Recipes
-          </h1>
+          <h1 className="mt-5 text-4xl pl-5">Lunch Recommendation Recipes</h1>
           <div className="overflow-x-scroll scroll-smooth overflow-hidden">
             {LunchRecipes.length > 0 ? (
               <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">

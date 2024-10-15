@@ -1,46 +1,57 @@
-'use client'
+// app/reviews/page.js
+"use client";
 import Card from "@/components/Card";
-import React, { useEffect, useState } from "react";
+import ReviewCard from "@/components/ReviewCard";
+import { useEffect, useState } from "react";
 
-const page = () => {
-  const [messages, setMessage] = useState([]);
+export default function ReviewsPage() {
+  const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchMessages = async () => {
+    const fetchReviews = async () => {
       try {
         const response = await fetch("/api/message");
-        // if (!response.ok) {
-        //   throw new Error(`HTTP error! Status: ${response.status}`);
-        // }
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to fetch reviews");
+        }
         const data = await response.json();
-        setMessage(data);
+
+        // Ensure the data is an array
+        setReviews(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error("Failed to fetch reviews:", error);
+        setError(error.message);
       }
     };
 
-    fetchMessages();
+    fetchReviews();
   }, []);
 
   return (
-    <div>
-      <div className="mt-20 text-center w-[510px]">
-        <h1 className="text-3xl">Review Messages</h1>
-
-
-        {messages.map((message) => {
-          <div key={message._id}>
-            <Card>
-              <div className="w-[400px]">
-                <h1>{message.email}</h1>
-                <p>{message.message}</p>
-              </div>
-            </Card>
-          </div>;
-        })}
-      </div>
+    <div className="mt-32 text-center ml-10">
+      <h1 className="text-2xl ml-20">Customer Reviews</h1>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : reviews.length === 0 ? (
+        <p className="text-2xl text-center">No reviews available.</p>
+      ) : (
+        <ul>
+          {reviews.map((review, index) => (
+            <li key={index} className="mt-7">
+              <ReviewCard>
+                <p className="text-2xl font-semibold">
+                  <strong>Email:</strong> {review.email}
+                </p>
+                <p className="text-2xl font-bold">
+                  <strong>Message:</strong> {review.message}
+                </p>
+              </ReviewCard>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
-};
-
-export default page;
+}

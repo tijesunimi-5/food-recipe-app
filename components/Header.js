@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header flex justify-between px-2 fixed right-0 left-0 top-0 pt-2  z-50 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] lg:px-4 lg:py-2">
+    <header className="header flex justify-between px-2 fixed right-0 left-0 top-0 pt-2  z-50 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] lg:px-4 lg:py-2 xl:w-[1300px]">
       <h1 className="text-3xl flex lg:text-4xl">
         <span className="flex lg:hidden">
           <FaBars className="text-2xl mt-1 mr-1 openMenu " onClick={menu} />
@@ -53,7 +53,7 @@ const Header = () => {
         </Link>
       </h1>
 
-      <ul className="hidden lg:flex text-2xl justify-between w-[300px] mt-2 font-bold text-orange-500">
+      <ul className="hidden lg:flex text-2xl justify-between w-[500px] mt-2 font-bold text-orange-500">
         <li>
           <Link href={"/"}>Home</Link>{" "}
         </li>
@@ -62,6 +62,9 @@ const Header = () => {
         </li>
         <li>
           <Link href={"/recipe"}>Recipes</Link>{" "}
+        </li>
+        <li>
+          <Link href={"/register/newsletter"}>Newsletter</Link>{" "}
         </li>
       </ul>
 

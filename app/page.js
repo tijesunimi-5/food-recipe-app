@@ -153,9 +153,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] text-center mt-20 md:w-[768px]">
+      <div className="w-[510px] text-center mt-20 md:w-[768px] lg:w-[1006px]">
         <h1 className="text-4xl font-bold">Explore by Cuisine Type</h1>
-        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44">
+        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44 lg:ml-[300px]">
           Discover new flavor and cooking techniques with our diverse selection
           of cuisine types.
         </p>
@@ -188,7 +188,7 @@ export default function Home() {
               </p>
             )}
 
-            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px]">
+            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px] lg:ml-[400px]">
               <Link href={"/recipe"}>
                 <Button>See More</Button>
               </Link>
@@ -197,8 +197,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px]">
-        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px]">
+      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px]">
+        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px] lg:ml-[280px]">
           <h1>Learn More About Us</h1>
           <p className="text-xl mt-4">
             Discover new recipes and cooking techniques with our diverse
@@ -212,17 +212,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px]">
-        <div className="w-[490px] text-center ml-2 py-6 md:w-[500px]">
+      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px] lg:ml-[220px]">
+        <div className="w-[490px] text-center ml-2 py-6 md:w-[500px] lg:w-[700px]">
           <h1 className="text-2xl">Recipe Collection</h1>
           <p className="text-xl">
             From quick weeknight dinners to elaborate weekend projects, we have
             recipes to fit every lifestyle and taste
           </p>
 
-          <div className="w-full text-center  overflow-x-scroll scroll-smooth">
-            <div className=" w-[840px]  ml-5 mr-7  mt-5 ">
-              <div className="w-[850px] flex gap-9 md:w-[990px]">
+          <div className="w-full text-center  overflow-x-scroll scroll-smooth ">
+            <div className=" w-[840px]  ml-5 mr-7  mt-5 lg:w-[1000px]">
+              <div className="w-[850px] flex gap-9 md:w-[990px] lg:w-[1000px]">
                 <div className="w-[390px] ">
                   <CollectionCard>
                     <div className="px-5">
@@ -274,8 +274,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2]">
-        <div className="text-center  py-4 md:w-[510px] md:ml-32">
+      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2] lg:w-[1006px]">
+        <div className="text-center  py-4 md:w-[510px] md:ml-32 lg:ml-72">
           <h1 className="text-4xl font-bold">Send Reviews</h1>
           <div className="mt-10">
             <label
