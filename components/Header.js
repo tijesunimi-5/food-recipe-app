@@ -60,7 +60,7 @@ const Header = () => {
       </ul>
 
       <div>
-        <Link href={"/register/sign-up"}>
+        <Link href={"/recipe"}>
           <Button onClick={buttonHandler}>Lastest Recipe</Button>
         </Link>
       </div>
