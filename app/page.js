@@ -21,6 +21,10 @@ export default function Home() {
     const enteredEmail = emailInputRef.current.value;
     const enteredMessage = messageInputRef.current.value;
 
+    if (!enteredEmail || !enteredMessage) {
+      setMessage('Enter a valid input');
+      return;
+    }
     try {
       const response = await fetch("/api/recipes", {
         method: "POST",
