@@ -13,8 +13,8 @@ import {
 
 const page = () => {
   return (
-    <div className="pt-20 mt-12 w-[510px] bg-[#FFFCF5] py-10 md:w-[768px] lg:w-[1006px]">
-      <div className="ml-10 md:ml-40 lg:ml-64">
+    <div className="pt-20 mt-12 w-[510px] bg-[#FFFCF5] py-10 md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
+      <div className="ml-10 md:ml-40 lg:ml-64 xl:ml-[550px]">
         <Card>
           <div className="ml-5">
             <p className="text-xl">
@@ -65,9 +65,9 @@ const page = () => {
         </Card>
       </div>
 
-      <div className="mt-10 ml-10 md:ml-40 lg:ml-64">
+      <div className="mt-10 ml-10 md:ml-40 lg:ml-64 xl:ml-[550px] xl:w-[600px]">
         <Card>
-          <div className="relative w-[400px] h-[200px] rounded-full ml-10 flex">
+          <div className="relative w-[400px] h-[200px] rounded-full ml-10 flex ">
             <img
               src="/codelight.jpg"
               className="rounded-full w-[200px] h-[200px]"
@@ -107,7 +107,7 @@ const page = () => {
         </Card>
       </div>
 
-      <div className="ml-9 mt-10 md:ml-40 lg:ml-64" id="support">
+      <div className="ml-9 mt-10 md:ml-40 lg:ml-64 xl:ml-[550px]" id="support">
         <Card>
           <h1 className="text-center text-2xl">
             Bank accounts to send support funds

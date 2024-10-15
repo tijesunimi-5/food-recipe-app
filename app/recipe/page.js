@@ -145,9 +145,9 @@ export default function Home() {
   };
 
   return (
-    <div className="w-[510px] md:w-[768px] lg:w-[1006px]">
+    <div className="w-[510px] md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
       <div className="mt-20">
-        <div className="pl-7 py-2  text-black relative w-[479px] md:ml-32 lg:ml-60">
+        <div className="pl-7 py-2  text-black relative w-[479px] md:ml-32 lg:ml-60 xl:ml-[520px]">
           <label
             htmlFor="text"
             className="absolute px-2 text-2xl font-semibold"

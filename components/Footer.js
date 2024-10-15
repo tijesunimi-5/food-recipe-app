@@ -5,8 +5,8 @@ import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaTwitterSquare, FaWha
 
 const Footer = () => {
   return (
-    <footer className="footer w-[510px] mt-32 py-4 bg-black text-white text-center md:w-[768px] lg:w-[1006px]">
-      <div className="footer-div w-[400px] ml-14 pt-5 md:ml-36 md:w-[500px] lg:w-[706px]">
+    <footer className="footer w-[510px] mt-32 py-4 bg-black text-white text-center md:w-[768px] lg:w-[1006px] xl:w-[1515px]">
+      <div className="footer-div w-[400px] ml-14 pt-5 md:ml-36 md:w-[500px] lg:w-[706px] xl:ml-[400px]">
         <h1 className="text-4xl md:text-5xl lg:text-6xl">
           <span>Tasty</span>-Cook.
         </h1>

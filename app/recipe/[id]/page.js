@@ -26,7 +26,7 @@ export default async function RecipePage({ params }) {
 
   return (
     <div className="text-center w-[510px] mt-20">
-      <div className="w-[450px] ml-8">
+      <div className="w-[450px] ml-8 md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
         <h1 className="text-4xl font-bold mt-10">{recipe.title}</h1>
         <img
           src={recipe.image}
@@ -51,8 +51,8 @@ export default async function RecipePage({ params }) {
         <h1>View more recipes</h1>
 
         <div className="w-[200px] h-[40px] ml-40 mt-5">
-          <Link href={'/recipe'}>
-          <Button>View More</Button>
+          <Link href={"/recipe"}>
+            <Button>View More</Button>
           </Link>
         </div>
       </div>

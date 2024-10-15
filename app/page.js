@@ -33,10 +33,7 @@ export default function Home() {
       console.log("Sending email:", enteredEmail);
       console.log("Sending message:", enteredMessage);
 
-      // if (!response.ok) {
-      //   throw new Error("Failed to send message.");
-      // }
-
+      
       const data = await response.json();
       setMessage("Review submitted successfully.");
       console.log(data);
@@ -97,24 +94,27 @@ export default function Home() {
 
   return (
     <div className="whole lg:overflow-x-hidden">
-      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px] lg:w-[1006px]">
-        <div className="mobile-background md:w-[768px] lg:w-[1024px]">
-          <img src="/food1.jpg" className="md:w-[768px] lg:w-[1015px]" />
+      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
+        <div className="mobile-background md:w-[768px] lg:w-[1024px] xl:w-[1525px]">
+          <img
+            src="/food1.jpg"
+            className="md:w-[768px] lg:w-[1015px] xl:w-[1520px] xl:h-[90vh]"
+          />
         </div>
-        <div className="overlay md:w-[768px] md:h-[510px] lg:w-[1010px] lg:h-[675px]"></div>
-        <div className="relative text-center lg:w-[900px] lg:ml-14">
-          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56 lg:pt-96 lg:text-6xl">
+        <div className="overlay md:w-[768px] md:h-[510px] lg:w-[1010px] lg:h-[675px] xl:w-[1525px] xl:h-[90vh]"></div>
+        <div className="relative text-center lg:w-[900px] lg:ml-14 xl:ml-[300px]">
+          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56 lg:pt-96 lg:text-6xl ">
             Cook Like a Pro With Our <span>Easy</span> and <span>Tasty</span>{" "}
             Recipes
           </h1>
         </div>
       </div>
 
-      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px] lg:w-[1006px]">
+      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
         <h1 className="text-center text-[1.8em] font-bold pt-10 md:text-4xl md:font-bold">
           Popular Recipes You Can't Miss
         </h1>
-        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px] lg:ml-[260px]">
+        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px] lg:ml-[260px] xl:ml-[500px]">
           From comfort food classics to exotic flavors, our featured recipes are
           sure to impress.
         </p>
@@ -153,9 +153,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] text-center mt-20 md:w-[768px] lg:w-[1006px]">
+      <div className="w-[510px] text-center mt-20 md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
         <h1 className="text-4xl font-bold">Explore by Cuisine Type</h1>
-        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44 lg:ml-[300px]">
+        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44 lg:ml-[300px] xl:ml-[550px]">
           Discover new flavor and cooking techniques with our diverse selection
           of cuisine types.
         </p>
@@ -188,7 +188,7 @@ export default function Home() {
               </p>
             )}
 
-            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px] lg:ml-[400px]">
+            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px] lg:ml-[400px] xl:ml-[650px]">
               <Link href={"/recipe"}>
                 <Button>See More</Button>
               </Link>
@@ -197,8 +197,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px]">
-        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px] lg:ml-[280px]">
+      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
+        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px] lg:ml-[280px] xl:ml-[500px]">
           <h1>Learn More About Us</h1>
           <p className="text-xl mt-4">
             Discover new recipes and cooking techniques with our diverse
@@ -212,8 +212,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px] lg:ml-[220px]">
-        <div className="w-[490px] text-center ml-2 py-6 md:w-[500px] lg:w-[700px]">
+      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px] lg:ml-[220px] xl:ml-[250px] xl:w-[900px]">
+        <div className="w-[490px] text-center ml-2 py-6 md:w-[500px] lg:w-[700px] xl:w-[900px]">
           <h1 className="text-2xl">Recipe Collection</h1>
           <p className="text-xl">
             From quick weeknight dinners to elaborate weekend projects, we have
@@ -274,8 +274,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2] lg:w-[1006px]">
-        <div className="text-center  py-4 md:w-[510px] md:ml-32 lg:ml-72">
+      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2] lg:w-[1006px] xl:w-[1525px]">
+        <div className="text-center  py-4 md:w-[510px] md:ml-32 lg:ml-72 xl:ml-[500px]">
           <h1 className="text-4xl font-bold">Send Reviews</h1>
           <div className="mt-10">
             <label

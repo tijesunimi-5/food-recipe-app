@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header flex justify-between px-2 fixed right-0 left-0 top-0 pt-2  z-50 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] lg:px-4 lg:py-2 xl:w-[1300px]">
+    <header className="header flex justify-between px-2 fixed right-0 left-0 top-0 pt-2  z-50 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] lg:px-4 lg:py-2 xl:w-[1520px]">
       <h1 className="text-3xl flex lg:text-4xl">
         <span className="flex lg:hidden">
           <FaBars className="text-2xl mt-1 mr-1 openMenu " onClick={menu} />

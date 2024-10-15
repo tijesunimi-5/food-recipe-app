@@ -40,7 +40,7 @@ const page = () => {
           <li>Access nutritional information and healthy options</li>
         </ul>
 
-        <div className="w-full text-center mt-20 bg-[#FFFCF5] py-5 ">
+        <div className="w-full text-center mt-20 bg-[#FFFCF5] py-5 xl:ml-[250px]">
           <h1>Testimonials</h1>
           <div className="  overflow-hidden overflow-x-scroll">
             <div>
