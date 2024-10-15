@@ -41,6 +41,10 @@ export default function Home() {
       setMessage("Review submitted successfully.");
       console.log(data);
 
+      setTimeout(() => {
+        setMessage("")
+      }, 3000);
+
       //Clear the input fields
       emailInputRef.current.value = "";
       messageInputRef.current.value = "";
@@ -92,34 +96,34 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="">
-      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px]">
-        <div className="mobile-background md:w-[768px]">
-          <img src="/food1.jpg" className="md:w-[768px]" />
+    <div className="whole lg:overflow-x-hidden">
+      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px] lg:w-[1006px]">
+        <div className="mobile-background md:w-[768px] lg:w-[1024px]">
+          <img src="/food1.jpg" className="md:w-[768px] lg:w-[1015px]" />
         </div>
-        <div className="overlay md:w-[768px] md:h-[510px]"></div>
-        <div className="relative text-center">
-          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56">
+        <div className="overlay md:w-[768px] md:h-[510px] lg:w-[1010px] lg:h-[675px]"></div>
+        <div className="relative text-center lg:w-[900px] lg:ml-14">
+          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56 lg:pt-96 lg:text-6xl">
             Cook Like a Pro With Our <span>Easy</span> and <span>Tasty</span>{" "}
             Recipes
           </h1>
         </div>
       </div>
 
-      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px]">
+      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px] lg:w-[1006px]">
         <h1 className="text-center text-[1.8em] font-bold pt-10 md:text-4xl md:font-bold">
           Popular Recipes You Can't Miss
         </h1>
-        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px]">
+        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px] lg:ml-[260px]">
           From comfort food classics to exotic flavors, our featured recipes are
           sure to impress.
         </p>
 
         <div className="text-center mt-10 pb-10">
           {recipes.length > 0 ? (
-            <div className="text-center mt-10 pb-10 ml-8 ">
+            <div className="text-center mt-10 pb-10 ml-8 lg:flex">
               {recipes.map((recipe) => (
-                <div className="mt-8">
+                <div className="mt-8 lg:flex">
                   <Card key={recipe.id}>
                     <div className="text-center ml-2 ">
                       <img

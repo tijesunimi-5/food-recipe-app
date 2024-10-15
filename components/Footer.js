@@ -5,8 +5,8 @@ import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaTwitterSquare, FaWha
 
 const Footer = () => {
   return (
-    <footer className="w-[510px] mt-32 py-4 bg-black text-white text-center md:w-[768px]">
-      <div className="w-[400px] ml-14 pt-5 md:ml-36 md:w-[500px]">
+    <footer className="footer w-[510px] mt-32 py-4 bg-black text-white text-center md:w-[768px]">
+      <div className="footer-div w-[400px] ml-14 pt-5 md:ml-36 md:w-[500px]">
         <h1 className="text-4xl md:text-5xl">
           <span>Tasty</span>-Cook.
         </h1>
@@ -23,9 +23,12 @@ const Footer = () => {
           <Link href={"/recipe"} className="underline decoration-orange-500 ">
             Recipes
           </Link>
-         
-          <Link href={"/register/sign-up"} className="underline decoration-orange-500 ">
-            Sign-up
+
+          <Link
+            href={"/register/newsletter"}
+            className="underline decoration-orange-500 "
+          >
+            Newsletter
           </Link>
         </p>
 
@@ -49,7 +52,9 @@ const Footer = () => {
 
         <p className="flex justify-between mt-5 md:text-2xl md:w-[600px] md:ml-[-45px]">
           Copyright@2024
-          <span>Created by _Codelight</span>
+          <Link href={'/review-messages'}>
+            <span>Created by _Codelight</span>
+          </Link>
         </p>
       </div>
     </footer>
