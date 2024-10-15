@@ -33,9 +33,12 @@ export default async function RecipePage({ params }) {
           alt={recipe.title}
           className="mt-5 rounded-xl"
         />
+        <p>{recipe.readyInMinutes}</p>
         <p className="text-xl mt-5 text-start">
           {recipe.instructions || "No instructions available"}
         </p>
+        <h2>Nutrition Information</h2>
+        <p>{recipe.nutrition}</p>
         <h2 className="text-2xl font-bold mt-10">Ingredients:</h2>
         <ul className="list-disc text-start mt-5">
           {recipe.extendedIngredients.map((ingredient) => (

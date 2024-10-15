@@ -10,7 +10,7 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [snackRecipes, setSnackRecipes] = useState([]);
   const [query, setQuery] = useState("");
-  const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
+  const apiKey = "bf861a0cc9fc42fdbca349c78b14ab56";
   const emailInputRef = useRef();
   const messageInputRef = useRef();
   const [messsage, setMessage] = useState("");
@@ -29,6 +29,9 @@ export default function Home() {
         },
         body: JSON.stringify({ email: enteredEmail, message: enteredMessage }),
       });
+
+      console.log("Sending email:", enteredEmail);
+      console.log("Sending message:", enteredMessage);
 
       if (!response.ok) {
         throw new Error("Failed to send message.");
@@ -90,24 +93,24 @@ export default function Home() {
 
   return (
     <div className="">
-      <div className="heropage mt-12 w-[510px] z-20 relative">
-        <div className="mobile-background">
-          <img src="/food1.jpg" />
+      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px]">
+        <div className="mobile-background md:w-[768px]">
+          <img src="/food1.jpg" className="md:w-[768px]" />
         </div>
-        <div className="overlay"></div>
+        <div className="overlay md:w-[768px] md:h-[510px]"></div>
         <div className="relative text-center">
-          <h1 className="z-40 text-4xl text-white pt-20">
+          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56">
             Cook Like a Pro With Our <span>Easy</span> and <span>Tasty</span>{" "}
             Recipes
           </h1>
         </div>
       </div>
 
-      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] ">
-        <h1 className="text-center text-[1.8em] font-bold pt-10">
+      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px]">
+        <h1 className="text-center text-[1.8em] font-bold pt-10 md:text-4xl md:font-bold">
           Popular Recipes You Can't Miss
         </h1>
-        <p className="w-[490px] ml-2 font-medium text-xl">
+        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px]">
           From comfort food classics to exotic flavors, our featured recipes are
           sure to impress.
         </p>
@@ -146,9 +149,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] text-center mt-20">
+      <div className="w-[510px] text-center mt-20 md:w-[768px]">
         <h1 className="text-4xl font-bold">Explore by Cuisine Type</h1>
-        <p className="text-xl font-medium w-[400px] ml-14 mt-5">
+        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44">
           Discover new flavor and cooking techniques with our diverse selection
           of cuisine types.
         </p>
@@ -181,7 +184,7 @@ export default function Home() {
               </p>
             )}
 
-            <div className="w-[200px] ml-40 mt-10 h-[40px]">
+            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px]">
               <Link href={"/recipe"}>
                 <Button>See More</Button>
               </Link>
@@ -190,8 +193,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-20 bg-[#F2F2F2] w-[510px]">
-        <div className="w-[450px] text-center ml-7 py-4">
+      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px]">
+        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px]">
           <h1>Learn More About Us</h1>
           <p className="text-xl mt-4">
             Discover new recipes and cooking techniques with our diverse
@@ -205,8 +208,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5]">
-        <div className="w-[490px] text-center ml-2 py-6">
+      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px]">
+        <div className="w-[490px] text-center ml-2 py-6 md:w-[500px]">
           <h1 className="text-2xl">Recipe Collection</h1>
           <p className="text-xl">
             From quick weeknight dinners to elaborate weekend projects, we have
@@ -215,7 +218,7 @@ export default function Home() {
 
           <div className="w-full text-center  overflow-x-scroll scroll-smooth">
             <div className=" w-[840px]  ml-5 mr-7  mt-5 ">
-              <div className="w-[850px] flex gap-9">
+              <div className="w-[850px] flex gap-9 md:w-[990px]">
                 <div className="w-[390px] ">
                   <CollectionCard>
                     <div className="px-5">
@@ -267,8 +270,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] mt-32 text-center">
-        <div className="text-center bg-[#F2F2F2] py-4">
+      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2]">
+        <div className="text-center  py-4 md:w-[510px] md:ml-32">
           <h1 className="text-4xl font-bold">Send Reviews</h1>
           <div className="mt-10">
             <label

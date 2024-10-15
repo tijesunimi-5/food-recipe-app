@@ -15,8 +15,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className=" w-[510px] fixed flex-col h-[55vh] bg-gray-200 mt-[-50px] pt-10  hidden dashboard z-40">
-      <ul className="text-2xl w-[500px] mt-5">
+    <div className=" w-[510px] fixed flex-col h-[55vh] bg-gray-200 mt-[-50px] pt-10  hidden dashboard z-40 md:w-[768px]">
+      <ul className="text-2xl w-[500px] mt-5 md:w-[720px]">
         <li className="home pl-5 font-semibold border-b-2 border-orange-500">
           <Link href={"/"} onClick={closeDashboard}>
             Home
@@ -35,7 +35,7 @@ const Dashboard = () => {
       </ul>
 
       <div className="flex mt-20 ">
-        <div className="w-[250px] h-[40px] ml-32 mt-10">
+        <div className="w-[250px] h-[40px] ml-32 mt-10 md:ml-60">
           <Link href={"/register/newsletter"} onClick={closeDashboard}>
             <Button>Subcribe to our newsletter</Button>
           </Link>

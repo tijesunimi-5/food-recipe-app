@@ -9,9 +9,14 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [snackRecipes, setSnackRecipes] = useState([]);
   const [cuisineRecipes, setCuisineRecipes] = useState([]);
+  const [dessertRecipes, setDessertRecipes] = useState([]);
+  const [beverageRecipes, setBeverageRecipes] = useState([]);
+  const [vegetableRecipes, setVegetableRecipes] = useState([]);
+  const [breakfastRecipes, setBreakfastRecipes] = useState([]);
+  const [LunchRecipes, setLunchRecipes] = useState([]);
   const [query, setQuery] = useState("");
   const [search, setSearch] = useState("");
-  const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
+  const apiKey = "bf861a0cc9fc42fdbca349c78b14ab56";
 
   const searchRecipes = async () => {
     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=10`;
@@ -61,28 +66,88 @@ export default function Home() {
     }
   };
 
+  const dessertRecipe = async () => {
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=desserts&number=15`;
+
+    try {
+      const response = await axios.get(url);
+      const { results } = response.data;
+      setDessertRecipes(results);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const beverageRecipe = async () => {
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=beverages&number=15`;
+
+    try {
+      const response = await axios.get(url);
+      const { results } = response.data;
+      setBeverageRecipes(results);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+   const vegetableRecipe = async () => {
+     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=vegetable&number=15`;
+
+     try {
+       const response = await axios.get(url);
+       const { results } = response.data;
+       setVegetableRecipes(results);
+     } catch (error) {
+       console.error("Error fetching recipes:", error);
+     }
+   };
+
+   const breakfastRecipe = async () => {
+     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=breakfast&number=15`;
+
+     try {
+       const response = await axios.get(url);
+       const { results } = response.data;
+       setBreakfastRecipes(results);
+     } catch (error) {
+       console.error("Error fetching recipes:", error);
+     }
+   };
+
+   const lunchRecipe = async () => {
+     const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=lunch&number=15`;
+
+     try {
+       const response = await axios.get(url);
+       const { results } = response.data;
+       setLunchRecipes(results);
+     } catch (error) {
+       console.error("Error fetching recipes:", error);
+     }
+   };
+
   useEffect(() => {
     // Fetch default recipes or based on a query
     fetchRecipes();
-  }, []);
-
-  useEffect(() => {
     snackRecipe();
-  }, []);
-
-
-  useEffect(() => {
     cuisineRecipe();
+    dessertRecipe();
+    beverageRecipe();
+    vegetableRecipe();
+    breakfastRecipe();
+    lunchRecipe();
   }, []);
+
+
 
   const handleSearch = () => {
     searchRecipes();
   };
 
   return (
-    <div className="w-[510px]">
+    <div className="w-[510px] md:w-[768px]">
       <div className="mt-20">
-        <div className="pl-7 py-2  text-black relative w-[479px]">
+        <div className="pl-7 py-2  text-black relative w-[479px] md:ml-32">
           <label
             htmlFor="email"
             className="absolute px-2 text-2xl font-semibold"
@@ -170,7 +235,7 @@ export default function Home() {
             </div>
           ) : (
             <p className="text-xl pl-5 font-semibold">
-              Cuisine unavailable at the moment try again later
+              Recipe unavailable at the moment try again later
             </p>
           )}
         </div>
@@ -208,7 +273,7 @@ export default function Home() {
             </div>
           ) : (
             <p className="text-xl pl-5 font-semibold">
-              Cuisine unavailable at the moment try again later
+              Recipe unavailable at the moment try again later
             </p>
           )}
         </div>
@@ -246,9 +311,209 @@ export default function Home() {
             </div>
           ) : (
             <p className="text-xl pl-5 font-semibold">
-              Cuisine unavailable at the moment try again later
+              Recipe unavailable at the moment try again later
             </p>
           )}
+        </div>
+      </div>
+
+      <div className="relative">
+        <h1 className="mt-10 text-4xl pl-5">Dessert Recipes</h1>
+        <div className="overflow-x-scroll scroll-smooth overflow-hidden">
+          {dessertRecipes.length > 0 ? (
+            <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">
+              {dessertRecipes.map((recipe) => (
+                <div className="w-[500px] mr-10">
+                  <Card key={recipe.id}>
+                    <div className="text-center ml-2 ">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="rounded-xl recipe-images"
+                      />
+                      <div className="w-[350px] ml-9">
+                        <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                        <p className="text-xl font-medium mt-3">
+                          Delicious recipe that you would love to try.
+                        </p>
+                        <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xl pl-5 font-semibold">
+              Recipe unavailable at the moment try again later
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="relative">
+        <h1 className="mt-10 text-4xl pl-5">Beverage Recipes</h1>
+        <div className="overflow-x-scroll scroll-smooth overflow-hidden">
+          {beverageRecipes.length > 0 ? (
+            <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">
+              {beverageRecipes.map((recipe) => (
+                <div className="w-[500px] mr-10">
+                  <Card key={recipe.id}>
+                    <div className="text-center ml-2 ">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="rounded-xl recipe-images"
+                      />
+                      <div className="w-[350px] ml-9">
+                        <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                        <p className="text-xl font-medium mt-3">
+                          Delicious recipe that you would love to try.
+                        </p>
+                        <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xl pl-5 font-semibold">
+              Recipe unavailable at the moment try again later
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="relative">
+        <h1 className="mt-10 text-4xl pl-5">vegetable Recipes</h1>
+        <div className="overflow-x-scroll scroll-smooth overflow-hidden">
+          {vegetableRecipes.length > 0 ? (
+            <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">
+              {vegetableRecipes.map((recipe) => (
+                <div className="w-[500px] mr-10">
+                  <Card key={recipe.id}>
+                    <div className="text-center ml-2 ">
+                      <img
+                        src={recipe.image}
+                        alt={recipe.title}
+                        className="rounded-xl recipe-images"
+                      />
+                      <div className="w-[350px] ml-9">
+                        <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                        <p className="text-xl font-medium mt-3">
+                          Delicious recipe that you would love to try.
+                        </p>
+                        <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                          <Link href={`/recipe/${recipe.id}`}>
+                            <Button>See Full Details</Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-xl pl-5 font-semibold">
+              Recipe unavailable at the moment try again later
+            </p>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-20">
+        <h1 className="text-center">
+          Are you curious on what to prepare in a day? Check out this
+          recommendations
+        </h1>
+        <div className="relative">
+          <h1 className="mt-5 text-4xl pl-5">
+            BreakFast Recommendation Recipes
+          </h1>
+          <div className="overflow-x-scroll scroll-smooth overflow-hidden">
+            {breakfastRecipes.length > 0 ? (
+              <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">
+                {breakfastRecipes.map((recipe) => (
+                  <div className="w-[500px] mr-10">
+                    <Card key={recipe.id}>
+                      <div className="text-center ml-2 ">
+                        <img
+                          src={recipe.image}
+                          alt={recipe.title}
+                          className="rounded-xl recipe-images"
+                        />
+                        <div className="w-[350px] ml-9">
+                          <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                          <p className="text-xl font-medium mt-3">
+                            Delicious recipe that you would love to try.
+                          </p>
+                          <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                            <Link href={`/recipe/${recipe.id}`}>
+                              <Button>See Full Details</Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xl pl-5 font-semibold">
+                Recipe unavailable at the moment try again later
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="relative">
+          <h1 className="mt-5 text-4xl pl-5">
+            Lunch Recommendation Recipes
+          </h1>
+          <div className="overflow-x-scroll scroll-smooth overflow-hidden">
+            {LunchRecipes.length > 0 ? (
+              <div className="w-[500px] overflow-x-scroll flex pl-14 overflow-hidden">
+                {LunchRecipes.map((recipe) => (
+                  <div className="w-[500px] mr-10">
+                    <Card key={recipe.id}>
+                      <div className="text-center ml-2 ">
+                        <img
+                          src={recipe.image}
+                          alt={recipe.title}
+                          className="rounded-xl recipe-images"
+                        />
+                        <div className="w-[350px] ml-9">
+                          <h1 className="text-2xl mt-2">{recipe.title}</h1>
+                          <p className="text-xl font-medium mt-3">
+                            Delicious recipe that you would love to try.
+                          </p>
+                          <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
+                            <Link href={`/recipe/${recipe.id}`}>
+                              <Button>See Full Details</Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xl pl-5 font-semibold">
+                Recipe unavailable at the moment try again later
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

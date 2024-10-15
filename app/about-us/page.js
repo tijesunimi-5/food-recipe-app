@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-[510px]">
+    <div className="w-[510px] md:w-[768px]">
       <div className="mt-20 pl-2">
         <h1>
           Welcome to <span>Tasty-</span>Cook! Your ultimate cooking companion.

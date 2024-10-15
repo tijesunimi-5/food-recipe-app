@@ -16,6 +16,7 @@ export async function POST(req) {
 
     //Validate input
     if (!email || !message) {
+      console.error("Validation error: Email and message required");
       return new Response(
         JSON.stringify({ error: "Email and message are required." }),
         { status: 400 }
@@ -26,8 +27,26 @@ export async function POST(req) {
     const client = await connectToDatabase();
     const db = client.db();
 
+    console.log("Connected to MongoDB");
+
+    const result = await db.collection("reviews").insertOne({ email, message });
+
+    // Check if the insertion was successful
+    if (result.insertedCount === 1) {
+      console.log("Database operation successful");
+    } else {
+      console.error("Failed to insert review into the database.");
+      return new Response(
+        JSON.stringify({ error: "Failed to submit review." }),
+        { status: 500 }
+      );
+    }
+
+    console.log("Database operation successful");
+
     //Close the database connection
-    client.close();
+    await client.close();
+    console.log("MongoDB connection closed");
 
     //Return a success response
     return new Response(

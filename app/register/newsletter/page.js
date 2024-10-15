@@ -13,8 +13,8 @@ import {
 
 const page = () => {
   return (
-    <div className="pt-20 mt-12 w-[510px] bg-[#FFFCF5] py-10">
-      <div className="ml-10">
+    <div className="pt-20 mt-12 w-[510px] bg-[#FFFCF5] py-10 md:w-[768px]">
+      <div className="ml-10 md:ml-40">
         <Card>
           <div className="ml-5">
             <p className="text-xl">
@@ -22,7 +22,7 @@ const page = () => {
               and update. <br />
             </p>
 
-            <div>
+            <div className="">
               <div className="pl-10">
                 <div className="mt-10">
                   <label
@@ -65,7 +65,7 @@ const page = () => {
         </Card>
       </div>
 
-      <div className="mt-10 ml-10 ">
+      <div className="mt-10 ml-10 md:ml-40">
         <Card>
           <div className="relative w-[400px] h-[200px] rounded-full ml-10 flex">
             <img
@@ -107,7 +107,7 @@ const page = () => {
         </Card>
       </div>
 
-      <div className="ml-9 mt-10" id="support">
+      <div className="ml-9 mt-10 md:ml-40" id="support">
         <Card>
           <h1 className="text-center text-2xl">
             Bank accounts to send support funds

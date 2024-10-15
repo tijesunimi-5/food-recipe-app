@@ -79,3 +79,7 @@ span {
   width: 380px;
   margin-top: -12px;
 }
+
+@media (min-width: 768px) {
+  
+}
