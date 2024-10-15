@@ -33,9 +33,9 @@ export default function Home() {
       console.log("Sending email:", enteredEmail);
       console.log("Sending message:", enteredMessage);
 
-      if (!response.ok) {
-        throw new Error("Failed to send message.");
-      }
+      // if (!response.ok) {
+      //   throw new Error("Failed to send message.");
+      // }
 
       const data = await response.json();
       setMessage("Review submitted successfully.");
