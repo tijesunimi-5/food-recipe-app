@@ -33,19 +33,19 @@ const Footer = () => {
         </p>
 
         <p className="flex text-4xl text-white w-[370px] mt-8 ml-4 justify-between md:w-[470px] md:text-5xl lg:w-[700px] lg:text-6xl">
-          <a href={"/"}>
+          <a href={"/https://www.facebook.com/lightdesignii?mibextid=LQQJ4d"}>
             <FaFacebookSquare />
           </a>
-          <a href={"/"}>
+          <a href={"/https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr"}>
             <FaInstagramSquare />
           </a>
-          <a href={"/"}>
+          <a href={"/https://x.com/codelight001/status/1830646298103681191?s=46"}>
             <FaTwitterSquare />
           </a>
-          <a href={"/"}>
+          <a href={"/https://www.linkedin.com/in/idowu-tijesunimi-189492294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"}>
             <FaLinkedin />
           </a>
-          <a href={"/"}>
+          <a href={"/https://wa.me/7018268171"}>
             <FaWhatsappSquare />
           </a>
         </p>
