@@ -79,7 +79,7 @@ const page = () => {
           <p className="text-xl ml-2">
             <span>
               If you need a good looking, well designed website, reach out to me{" "}
-              <a href="/https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr" className="underline">
+              <a href="https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr" className="underline">
                 Here!
               </a>{" "}
               <br />
@@ -88,19 +88,19 @@ const page = () => {
           </p>
 
           <p className="flex text-4xl text-orange-500 w-[370px] mt-8 ml-10 justify-between">
-            <a href={"/https://www.facebook.com/lightdesignii?mibextid=LQQJ4d"}>
+            <a href={"https://www.facebook.com/lightdesignii?mibextid=LQQJ4d"}>
               <FaFacebookSquare />
             </a>
-            <a href={"/https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr"}>
+            <a href={"https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr"}>
               <FaInstagramSquare />
             </a>
-            <a href={"/https://x.com/codelight001/status/1830646298103681191?s=46"}>
+            <a href={"https://x.com/codelight001/status/1830646298103681191?s=46"}>
               <FaTwitterSquare />
             </a>
-            <a href={"/https://www.linkedin.com/in/idowu-tijesunimi-189492294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"}>
+            <a href={"https://www.linkedin.com/in/idowu-tijesunimi-189492294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"}>
               <FaLinkedin />
             </a>
-            <a href={"/https://wa.me/7018268171"}>
+            <a href={"https://wa.me/7018268171"}>
               <FaWhatsappSquare />
             </a>
           </p>
