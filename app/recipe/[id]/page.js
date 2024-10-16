@@ -4,7 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 
 async function getRecipe(id) {
-  const apiKey = "24e8c8d91c2a4e57b44c61208f8055e0";
+  const apiKey = "bf861a0cc9fc42fdbca349c78b14ab56";
   const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`;
 
   try {
