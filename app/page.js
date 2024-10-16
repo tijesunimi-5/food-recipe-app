@@ -25,6 +25,10 @@ export default function Home() {
       setMessage('Enter a valid input');
       return;
     }
+
+    setTimeout(() => {
+      setMessage("")
+    }, 3000);
     try {
       const response = await fetch("/api/recipes", {
         method: "POST",
