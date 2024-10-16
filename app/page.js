@@ -23,12 +23,14 @@ export default function Home() {
 
     if (!enteredEmail || !enteredMessage) {
       setMessage('Enter a valid input');
+
+      setTimeout(() => {
+      setMessage("");
+    }, 3000);
       return;
     }
 
-    setTimeout(() => {
-      setMessage("")
-    }, 3000);
+    
     try {
       const response = await fetch("/api/recipes", {
         method: "POST",
