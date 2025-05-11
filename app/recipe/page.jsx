@@ -219,18 +219,18 @@ export default function Home() {
     <div className="w-screen overflow-x-hidden md:w-screen lg:w-screen xl:w-screen">
       {/* Search */}
       <div className="mt-20">
-        <div className="py-2 px-4 text-black relative md:ml-32 lg:ml-60 xl:ml-[520px]">
+        <div className="py-2 px-4 text-black relative md:ml-0 lg:ml-0 md:flex md:justify-center md:items-center">
           <input
             type="text"
             id="text"
             value={query}
-            className="border-2 relative rounded-lg bg-transparent backdrop:blur-3xl border-orange-500 text-[18px] pl-2 h-[34px] w-[350px]"
+            className="border-2 relative rounded-lg bg-transparent backdrop:blur-3xl border-orange-500 text-[18px] pl-2 h-[34px] w-[350px] md:w-[500px]"
             onChange={(e) => setQuery(e.target.value)}
           />
           <Button
             onClick={handleSearch}
             styles={
-              "absolute right-3 h-[30px] py-0 top-2.5 shadow-none rounded-r rounded-l-none"
+              "absolute right-3 h-[30px] py-0 top-2.5 shadow-none rounded-r rounded-l-none md:relative md:h-[36px] md:pt-1 md:bg-orange-500 md:text-white md:rounded-xl  md:ml-5 md:mt-0 md:top-0"
             }
           >
             Search
@@ -282,20 +282,20 @@ export default function Home() {
       {/* gen recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">Recipes</h1>
-        <div className="overflow-x-scroll md:overflow-x-hidden scroll-smooth overflow-hidden mt-5">
+        <div className="overflow-x-scroll md:overflow-x-hidden scroll-smooth overflow-hidden mt-5 md:mx-3 rounded-xl">
           {recipes.length > 0 ? (
             <div
               key={recipes.id}
-              className="w-[500px] overflow-x-scroll flex gap-7 pl-4 overflow-hidden"
+              className="w-[500px] overflow-x-scroll flex gap-7 pl-4 overflow-hidden md:w-screen rounded"
             >
               {recipes.map((recipe) => (
                 <div key={recipe.id} className="">
-                  <Card key={recipe.id} styles={"md:w-[500px] lg:w-[400px]"}>
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-[1.3em] mt-2 text-col">
@@ -327,17 +327,17 @@ export default function Home() {
       {/* Cuisine recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">Cuisine Recipes</h1>
-        <div className="overflow-x-scroll scroll-smooth overflow-hidden mt-5">
+        <div className="overflow-x-scroll scroll-smooth overflow-hidden mt-5 md:mx-3 rounded-xl">
           {cuisineRecipes.length > 0 ? (
-            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden">
+            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden md:w-screen">
               {cuisineRecipes.map((recipe) => (
-                <div className="w-[500px]">
-                  <Card key={recipe.id} styles={"md:w-[500px] lg:w-[400px]"}>
+                <div className="">
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-2xl mt-2 text-col">
@@ -370,17 +370,17 @@ export default function Home() {
       {/* Snack recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">Snack Recipes</h1>
-        <div className="overflow-x-scroll scroll-smooth overflow-hidden mt-5">
+        <div className="overflow-x-scroll scroll-smooth overflow-hidden mt-5 rounded-xl md:w-screen">
           {snackRecipes.length > 0 ? (
-            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden">
+            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden md:w-screen">
               {snackRecipes.map((recipe) => (
                 <div className="lg:flex">
-                  <Card key={recipe.id} styles={"md:w-[500px] lg:w-[400px]"}>
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center  ">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-2xl mt-2 text-col">
@@ -413,17 +413,17 @@ export default function Home() {
       {/* Dessert recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">Dessert Recipes</h1>
-        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden">
+        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden rounded-xl md:mx-3">
           {dessertRecipes.length > 0 ? (
-            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden">
+            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden md:w-screen">
               {dessertRecipes.map((recipe) => (
                 <div className="lg:flex">
-                  <Card key={recipe.id} styles={"md:w-[500px] lg:w-[400px]"}>
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-2xl mt-2 text-col">
@@ -456,17 +456,17 @@ export default function Home() {
       {/* Beverage recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">Beverage Recipes</h1>
-        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden">
+        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden rounded-xl md:mx-3">
           {beverageRecipes.length > 0 ? (
-            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden">
+            <div className="w-[500px] overflow-x-scroll flex gap-4 pl-4 overflow-hidden md:w-screen">
               {beverageRecipes.map((recipe) => (
                 <div className="lg:flex">
-                  <Card key={recipe.id}>
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-2xl mt-2 text-col">
@@ -499,17 +499,17 @@ export default function Home() {
       {/* Vegetable recipe */}
       <div className="relative">
         <h1 className="mt-10 text-[1.6em] text-col pl-5">vegetable Recipes</h1>
-        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden">
+        <div className="overflow-x-scroll scroll-smooth mt-5 overflow-hidden rounded-xl md:mx-3">
           {vegetableRecipes.length > 0 ? (
-            <div className="w-[500px] overflow-x-scroll flex pl-4 overflow-hidden">
+            <div className="w-[500px] overflow-x-scroll flex pl-4 gap-4 overflow-hidden md:w-screen">
               {vegetableRecipes.map((recipe) => (
-                <div className="w-[500px] mr-10">
-                  <Card key={recipe.id}>
+                <div className="">
+                  <Card key={recipe.id} styles={"md:w-[300px] lg:w-[400px]"}>
                     <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-t-xl"
+                        className="rounded-t-xl w-screen"
                       />
                       <div className="px-3 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-2xl mt-2 text-col">

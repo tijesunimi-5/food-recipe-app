@@ -178,7 +178,7 @@ export default function Home() {
                         <h1 className="text-[19px] mt-2 text-col">
                           {recipe.title}
                         </h1>
-                        <p className="text-[16px] w-[280px] overflow-hidden md:w-[400px] text-start font-medium h-[70px] text-ellipsis">
+                        <p className="text-[16px] w-[280px] overflow-hidden md:w-[400px] text-start font-medium h-[70px] text-ellipsis px-2">
                           {stripHtml(recipe.summary || "")}...
                         </p>
 
