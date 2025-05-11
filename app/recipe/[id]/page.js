@@ -20,13 +20,12 @@ export default async function RecipePage({ params }) {
   const { id } = params;
   const recipe = await getRecipe(id);
 
-  if (!recipe) {
-    return <div>Recipe not found</div>;
-  }
+  if (!recipe)
+    return <div className="text-center h-[100vh] w-[]">Recipe not found</div>;
 
   return (
-    <div className="text-center w-[510px] mt-20">
-      <div className="w-[450px] ml-8 md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
+    <div className="text-center w-[375px] mt-20">
+      <div className="w-[375px] ml-8 md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
         <h1 className="text-4xl font-bold mt-10">{recipe.title}</h1>
         <img
           src={recipe.image}

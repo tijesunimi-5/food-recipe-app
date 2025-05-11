@@ -1,55 +1,68 @@
-'use client'
+"use client";
 import Link from "next/link";
 import React from "react";
-import { FaFacebookSquare, FaInstagramSquare, FaLinkedin, FaTwitterSquare, FaWhatsappSquare } from "react-icons/fa";
+import {
+  FaFacebookSquare,
+  FaGithub,
+  FaInstagramSquare,
+  FaLinkedin,
+  FaTwitterSquare,
+  FaWhatsappSquare,
+} from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
   return (
-    <footer className="footer w-[510px] mt-32 py-4 bg-black text-white text-center md:w-[768px] lg:w-[1006px] xl:w-[1515px]">
-      <div className="footer-div w-[400px] ml-14 pt-5 md:ml-36 md:w-[500px] lg:w-[706px] xl:ml-[400px]">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl">
-          <span>Tasty</span>-Cook.
+    <footer className="footer flex flex-col px-2 overflow-x-hidden mt-12 py-4 border-t-2 border-[#f97316] md:w-screen lg:w-screen xl:w-screen xl:items-center">
+      <div className="xl:w-[1000px] xl:flex xl:flex-col xl:items-center">
+        <h1 className="text-col text-[1.6em] font-bold text-center pb-3 xl:text-[1.8em]">
+          TastyCook
         </h1>
 
-        <p className="text-xl mt-5 md:text-2xl lg:text-3xl">
+        <p className="text-[16.5px] xl:text-[22px] xl:w-[800px] xl:text-center">
           From quick and easy meals to gourmet delights, we have something for
           every taste and occasion.
         </p>
 
-        <p className="flex justify-between w-[290px] ml-16 mt-4 md:w-[390px] md:text-xl lg:text-2xl lg:w-[590px]">
-          <Link href={"/about-us"} className="underline decoration-orange-500 ">
-            About Us
+        <nav className="flex justify-between text-col mt-3 font-bold px-4 xl:w-[500px]">
+          <Link href={"/about-us"} className="underline cursor-pointer">
+            About
           </Link>
-          <Link href={"/recipe"} className="underline decoration-orange-500 ">
-            Recipes
+          <Link href={"/recipe"} className="underline cursor-pointer">
+            Latest Recipe
           </Link>
-
           <Link
             href={"/register/newsletter"}
-            className="underline decoration-orange-500 "
+            className="underline cursor-pointer"
           >
             Newsletter
           </Link>
-        </p>
+        </nav>
 
-        <p className="flex text-4xl text-white w-[370px] mt-8 ml-4 justify-between md:w-[470px] md:text-5xl lg:w-[700px] lg:text-6xl">
-          <a href={"https://www.facebook.com/lightdesignii?mibextid=LQQJ4d"}>
-            <FaFacebookSquare />
-          </a>
-          <a href={"https://www.instagram.com/codelight_01?igsh=NjU4MDFpZDhrb2d0&utm_source=qr"}>
-            <FaInstagramSquare />
-          </a>
-          <a href={"https://x.com/codelight001/status/1830646298103681191?s=46"}>
-            <FaTwitterSquare />
-          </a>
-          <a href={"https://www.linkedin.com/in/idowu-tijesunimi-189492294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"}>
-            <FaLinkedin />
-          </a>
-          <a href={"https://wa.me/7018268171"}>
-            <FaWhatsappSquare />
-          </a>
-        </p>
-
+        <div className="social-icons flex justify-between w-[200px] text-[18px] text-col mt-5 ml-20 xl:w-[400px] xl:ml-0">
+          <FaLinkedin
+            className="text-4xl shadow-lg p-1"
+            onClick={() =>
+              router.push(
+                "https://www.linkedin.com/in/idowu-tijesunimi-189492294?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              )
+            }
+          />
+          <FaTwitterSquare
+            className="text-4xl shadow-md p-1"
+            onClick={() =>
+              router.push(
+                "https://x.com/codelight001/status/1830646298103681191?s=46"
+              )
+            }
+          />
+          <FaGithub
+            className="text-4xl shadow-md p-1"
+            onClick={() => router.push("https://github.com/tijesunimi-5")}
+          />
+        </div>
         <p className="flex justify-between mt-5 md:text-2xl md:w-[600px] md:ml-[-45px] lg:w-[850px]">
           Copyright@2024
           <Link href={"/review-messages"}>

@@ -3,7 +3,9 @@ import Button from "@/components/Button";
 import Card from "@/components/Card";
 import CollectionCard from "@/components/CollectionCard";
 import axios from "axios";
+import gsap from "gsap";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -14,6 +16,7 @@ export default function Home() {
   const emailInputRef = useRef();
   const messageInputRef = useRef();
   const [messsage, setMessage] = useState("");
+  const router = useRouter();
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -22,15 +25,14 @@ export default function Home() {
     const enteredMessage = messageInputRef.current.value;
 
     if (!enteredEmail || !enteredMessage) {
-      setMessage('Enter a valid input');
+      setMessage("Enter a valid input");
 
       setTimeout(() => {
-      setMessage("");
-    }, 3000);
+        setMessage("");
+      }, 3000);
       return;
     }
 
-    
     try {
       const response = await fetch("/api/recipes", {
         method: "POST",
@@ -43,13 +45,12 @@ export default function Home() {
       console.log("Sending email:", enteredEmail);
       console.log("Sending message:", enteredMessage);
 
-      
       const data = await response.json();
       setMessage("Review submitted successfully.");
       console.log(data);
 
       setTimeout(() => {
-        setMessage("")
+        setMessage("");
       }, 3000);
 
       //Clear the input fields
@@ -62,12 +63,19 @@ export default function Home() {
   };
 
   const fetchSnackRecipes = async () => {
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=cuisine&number=1`;
+    const storedRecipes = localStorage.getItem("snackRecipes");
+    if (storedRecipes) {
+      const parsedRecipes = JSON.parse(storedRecipes);
+      setSnackRecipes(parsedRecipes);
+      return;
+    }
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=cuisine&number=4`;
 
     try {
       const response = await axios.get(url);
       const { results } = response.data;
       if (results && results.length > 0) {
+        localStorage.setItem("snackRecipes", JSON.stringify(results));
         setSnackRecipes(results);
       } else {
         console.error("No snack recipes found.");
@@ -78,14 +86,25 @@ export default function Home() {
   };
 
   const fetchRecipes = async () => {
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=4`;
+    //check if recipes exist in localstorage
+    const storedRecipes = localStorage.getItem("allRecipe");
+    if (storedRecipes) {
+      const parsedRecipes = JSON.parse(storedRecipes);
+      setRecipes(parsedRecipes);
+      return;
+    }
+
+    //If there's no recipe in localstorage, featch from API
+    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=10&addRecipeInformation=true&query=${query}`;
 
     try {
       const response = await axios.get(url);
 
       const { results } = response.data;
+      const allResult = response.data;
       if (results && results.length > 0) {
         setRecipes(results);
+        localStorage.setItem("allRecipe", JSON.stringify(results));
       } else {
         console.error("No recipe found");
       }
@@ -96,61 +115,79 @@ export default function Home() {
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
-
-  useEffect(() => {
     fetchSnackRecipes();
   }, []);
 
+  useEffect(() => {
+    gsap.to(".hero-content", {
+      opacity: 1,
+      duration: 2,
+    });
+  }, []);
+
+  //to remove every html tag from spoonacular result
+  const stripHtml = (html) => {
+    const parser = new DOMParser();
+    const dom = parser.parseFromString(html, "text/html");
+    return dom.body.textContent || "";
+  };
+
   return (
-    <div className="whole lg:overflow-x-hidden">
-      <div className="heropage mt-12 w-[510px] z-20 relative md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
-        <div className="mobile-background md:w-[768px] lg:w-[1024px] xl:w-[1525px]">
+    <div className="whole overflow-x-hidden">
+      {/* hero-section */}
+      <div className="heropage mt-12 relative h-screen md:w-[768px] md:h-[70vh] flex flex-col items-center lg:w-screen xl:w-screen xl:h-screen">
+        <div className="h-full w-full overflow-hidden md:h-[70vh] xl:h-screen">
           <img
-            src="/food1.jpg"
-            className="md:w-[768px] lg:w-[1015px] xl:w-[1520px] xl:h-[90vh]"
+            src="/food2.jpg"
+            alt="background"
+            className="relative h-full md:h-[70vh] md:w-screen xl:h-screen"
           />
         </div>
-        <div className="overlay md:w-[768px] md:h-[510px] lg:w-[1010px] lg:h-[675px] xl:w-[1525px] xl:h-[90vh]"></div>
-        <div className="relative text-center lg:w-[900px] lg:ml-14 xl:ml-[300px]">
-          <h1 className="z-40 text-4xl text-white pt-20 md:pt-56 lg:pt-96 lg:text-6xl ">
-            Cook Like a Pro With Our <span>Easy</span> and <span>Tasty</span>{" "}
-            Recipes
-          </h1>
-        </div>
+        <h1 className="absolute bottom-[190px] bg-overlay text-center text-white hero-content opacity-0 md:text-[30px]">
+          Unlock new cooking skills with our recipe
+        </h1>
       </div>
 
-      <div className="mt-64 bg-[#FFFCF5] text-center w-[510px] md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
-        <h1 className="text-center text-[1.8em] font-bold pt-10 md:text-4xl md:font-bold">
+      {/* Recipes */}
+      <div className=" bg-[#FFFCF5] text-center w-screen flex flex-col items-center md:w-[768px] lg:w-screen xl:w-[1500px]">
+        <h1 className="text-center text-[1.3em] font-bold pt-10 md:text-4xl md:font-bold">
           Popular Recipes You Can't Miss
         </h1>
-        <p className="w-[490px] ml-2 font-medium text-xl md:text-3xl md:font-medium md:pt-5 md:ml-[140px] lg:ml-[260px] xl:ml-[500px]">
+
+        <p className=" mx-2 font-medium text-[16px] md:text-[20px] md:font-semibold md:px-20 md:pt-5 lg:w-[800px] ">
           From comfort food classics to exotic flavors, our featured recipes are
           sure to impress.
         </p>
 
-        <div className="text-center mt-10 pb-10">
+        <div className="text-center pb-10">
           {recipes.length > 0 ? (
-            <div className="text-center mt-10 pb-10 ml-8 lg:flex">
+            <div
+              key={recipes.id}
+              className="text-center flex flex-col gap-10 mt-10 pb-10 lg:grid lg:grid-cols-2 xl:grid-cols-3"
+            >
               {recipes.map((recipe) => (
-                <div className="mt-8 lg:flex">
-                  <Card key={recipe.id}>
-                    <div className="text-center ml-2 ">
+                <div key={recipe.id} className="lg:flex">
+                  <Card key={recipe.id} styles={'md:w-[500px] lg:w-[400px]'}>
+                    <div className="text-center">
                       <img
                         src={recipe.image}
                         alt={recipe.title}
-                        className="rounded-xl recipe-images"
+                        className="rounded-t-xl w-full"
                       />
-                      <div className="w-[350px] ml-9">
-                        <h1 className="text-2xl mt-2">{recipe.title}</h1>
-                        <p className="text-xl font-medium mt-3">
-                          Delicious recipe that you would love to try.
+                      <div className="px-3 flex flex-col items-center justify-center gap-4">
+                        <h1 className="text-[19px] mt-2 text-col">
+                          {recipe.title}
+                        </h1>
+                        <p className="text-[16px] w-[280px] overflow-hidden md:w-[400px] text-start font-medium h-[70px] text-ellipsis">
+                          {stripHtml(recipe.summary || "")}...
                         </p>
-                        <div className="mt-5 ml-[-20px] w-[400px] h-[50px] text-center">
-                          <Link href={`/recipe/${recipe.id}`}>
-                            <Button>See Full Details</Button>
-                          </Link>
-                        </div>
+
+                        <Button
+                          onClick={() => router.push(`/recipe/${recipe.id}`)}
+                          styles={"mb-5 bg-btn"}
+                        >
+                          Details
+                        </Button>
                       </div>
                     </div>
                   </Card>
@@ -163,31 +200,37 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-[510px] text-center mt-20 md:w-[768px] lg:w-[1006px] xl:w-[1500px]">
-        <h1 className="text-4xl font-bold">Explore by Cuisine Type</h1>
-        <p className="text-xl font-medium w-[400px] ml-14 mt-5 md:ml-44 lg:ml-[300px] xl:ml-[550px]">
-          Discover new flavor and cooking techniques with our diverse selection
-          of cuisine types.
-        </p>
+      {/* Cuisine section */}
+      <div className="w-screen flex flex-col justify-center mt-5 md:w-screen lg:w-screen xl:w-screen">
+        <div className="relative ml-3 md:px-20">
+          <h1 className="text-[1.3em] font-bold text-col lg:text-[1.6em] lg:font-bold">
+            Explore by Cuisine Type
+          </h1>
+          <p className="text-[16px] font-medium mt-2 lg:text-[19px] lg:w-[400px]">
+            Discover new flavor and cooking techniques with our diverse
+            selection of cuisine types.
+          </p>
+        </div>
 
         <div className="relative">
-          <div className="relative">
+          <div className="relative flex flex-col justify-center items-center">
             {snackRecipes.length > 0 ? (
-              <div className="flex flex-col w-[510px] pl-14 relative">
+              <div
+                key={snackRecipes.id}
+                className="flex flex-col gap-4 mt-4 relative justify-center lg:grid lg:grid-cols-2 items-center xl:grid-cols-3"
+              >
                 {snackRecipes.map((recipe) => (
                   <div
                     key={recipe.id}
-                    className="text-center shadow-md bg-white rounded-xl w-[400px] mt-9 relative"
+                    className="text-center flex flex-col  items-center shadow-md rounded-xl relative md:w-[400px] md:mt-4 h-[380px]"
                   >
                     <img
                       src={recipe.image}
                       alt={recipe.title}
-                      className="rounded-xl h-64 object-cover snack-recipe"
+                      className="rounded-t-xl h-64 w-full"
                       key={recipe.id}
                     />
-                    <div className="snack-title-overlay rounded-xl">
-                      {recipe.title}
-                    </div>
+                    <h1 className="mt-8 w-[220px] text-col">{recipe.title}</h1>
                   </div>
                 ))}
               </div>
@@ -198,31 +241,37 @@ export default function Home() {
               </p>
             )}
 
-            <div className="w-[200px] ml-40 mt-10 h-[40px] md:ml-[280px] lg:ml-[400px] xl:ml-[650px]">
-              <Link href={"/recipe"}>
-                <Button>See More</Button>
-              </Link>
-            </div>
+            <Button
+              onClick={() => router.push(`/recipe`)}
+              styles={"mt-5 bg-btn lg:mt-10"}
+            >
+              See more
+            </Button>
           </div>
         </div>
       </div>
 
-      <div className="mt-20 bg-[#F2F2F2] w-[510px] md:w-[768px] lg:w-[1006px] xl:w-[1525px]">
-        <div className="w-[450px] text-center ml-7 py-4 md:ml-[180px] lg:ml-[280px] xl:ml-[500px]">
-          <h1>Learn More About Us</h1>
-          <p className="text-xl mt-4">
+      {/* About section */}
+      <div className="mt-20 bg-[#F2F2F2] w-full md:w-screen lg:w-screen">
+        <div className="text-center flex flex-col items-center py-4">
+          <h1 className="text-col font-bold text-[1.3em]">
+            Learn More About Us
+          </h1>
+          <p className="text-[18px] mt-4 mx-4 md:w-[400px] md:font-semibold">
             Discover new recipes and cooking techniques with our diverse
             selection of cuisine types.
           </p>
-          <div className="w-[150px] h-[40px] ml-40 mt-4">
-            <Link href={"/about-us"}>
-              <Button>Learn About Us</Button>
-            </Link>
-          </div>
+
+          <Button
+            onClick={() => router.push("/about-us")}
+            styles={"bg-btn mt-10"}
+          >
+            About Us
+          </Button>
         </div>
       </div>
 
-      <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px] lg:ml-[220px] xl:ml-[250px] xl:w-[900px]">
+      {/* <div className="w-[510px] overflow-hidden mt-20 bg-[#FFFCF5] md:ml-[120px] lg:ml-[220px] xl:ml-[250px] xl:w-[900px]">
         <div className="w-[490px] text-center ml-2 py-6 md:w-[500px] lg:w-[700px] xl:w-[900px]">
           <h1 className="text-2xl">Recipe Collection</h1>
           <p className="text-xl">
@@ -282,39 +331,40 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="w-[510px] mt-32 text-center md:w-[768px] bg-[#F2F2F2] lg:w-[1006px] xl:w-[1525px]">
-        <div className="text-center  py-4 md:w-[510px] md:ml-32 lg:ml-72 xl:ml-[500px]">
-          <h1 className="text-4xl font-bold">Send Reviews</h1>
-          <div className="mt-10">
-            <label
-              htmlFor="email"
-              className="absolute px-2 text-2xl font-semibold"
-            >
-              Email:{" "}
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="border-2 w-[350px] rounded-lg border-orange-500 pl-20  text-2xl"
-              ref={emailInputRef}
-            />
+      {/* Reviews */}
+      <div className="w-screen flex flex-col mt-32 text-center md:w-[768px] bg-[#F2F2F2] lg:w-screen[1006px] xl:w-[1525px]">
+        <div className="text-center flex flex-col py-4 md:w-[510px] md:ml-32 xl:ml-[500px]">
+          <h1 className="text-[1.3em] text-col font-bold">Send Reviews</h1>
+          <div className="mt-4 flex flex-col items-center">
+            <div className="relative">
+              <label
+                htmlFor="email"
+                className="absolute px-2 text-[19px] mt-1 text-gray-500 font-semibold"
+              >
+                Email:{" "}
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="border-2 w-[350px] rounded-lg border-orange-500 pl-20  text-2xl"
+                ref={emailInputRef}
+              />
+            </div>
             <textarea
               rows={3}
               ref={messageInputRef}
               className="border-2 border-orange-500 text-2xl pl-2 mt-5 rounded-lg w-[350px]"
+              placeholder="Message"
             />
 
-            <div className="w-[150px] mt-5 ml-44 h-[40px]">
-              <Button onClick={sendMessage}>Send</Button>
-            </div>
-            <div className="w-[250px] h-[40px] ml-32 mt-10">
-              <Link href={"/register/newsletter"}>
-                <Button>Subcribe to our newsletter</Button>
-              </Link>
-            </div>
-            <p className="text-2xl text-center">{messsage}</p>
+            <Button styles={"mt-2 shadow-xl border-btn"}>Send Message</Button>
+            <Button styles={"mt-4 border-btn"}>
+              Subcribe to our newsletter
+            </Button>
+
+            <p className="text-2xl text-center ">{messsage}</p>
           </div>
         </div>
       </div>

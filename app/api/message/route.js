@@ -4,7 +4,7 @@ import clientPromise from "@/lib/mongodb";
 export async function GET(request) {
   try {
     const client = await clientPromise;
-    const db = client.db("test"); // Replace 'yourDatabaseName' with your actual database name
+    const db = client.db('test'); // Replace 'yourDatabaseName' with your actual database name
 
     const reviews = await db.collection("reviews").find({}).toArray();
 

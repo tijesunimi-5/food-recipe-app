@@ -35,7 +35,7 @@ span {
   color: orange;
 }
 .mobile-background {
-  width: 510px;
+  width: 375px;
   height: 250px;
   background-size: cover;
   background-position-x: -50px;
@@ -43,13 +43,16 @@ span {
 }
 .overlay {
   background: rgba(0, 0, 0, 0.3);
-  width: 510px;
-  height: 340px;
+  width: 375px;
+  height: 250px;
   position: absolute;
+}
+.bg-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .recipe-images {
-  width: 430px;
+  width: 300px;
   height: 300px;
 }
 .cuisine-image {
@@ -71,7 +74,7 @@ span {
   z-index: 30;
   display: none;
 }
-.snack-recipe:hover .snack-title-overlay:hover  {
+.snack-recipe:hover .snack-title-overlay:hover {
   display: flex;
   cursor: pointer;
 }
@@ -81,5 +84,20 @@ span {
 }
 
 @media (min-width: 820px) {
-  
 }
+
+.text-col {
+  color: #f97316;
+}
+
+.bg-btn {
+  background: #f97316;
+  color: #fff;
+}
+.border-btn {
+  border: 1px solid #f97316;
+}
+
+/*
+bg-[#ededed]
+*/
